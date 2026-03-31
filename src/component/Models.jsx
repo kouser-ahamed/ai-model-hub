@@ -1,7 +1,7 @@
 import { use, } from "react";
 import ModeslCard from "./ModeslCard";
 
-const Models = ({ modelPromise , cartItems, setCartItems}) => {
+const Models = ({ modelPromise ,carts, setCarts}) => {
     const models = use(modelPromise);
 
 
@@ -18,7 +18,7 @@ const Models = ({ modelPromise , cartItems, setCartItems}) => {
                 {
                     models.map((model) => (
                         <ModeslCard key ={model.id}
-                        model={model} cartItems = {cartItems} setCartItems={setCartItems}>
+                        model={model} carts={carts} setCarts={setCarts}>
 
                         </ModeslCard>
 

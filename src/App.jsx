@@ -13,16 +13,11 @@ const getModels = async () => {
 
 const modelPromise = getModels()
 
-
-
-
-
 function App() {
 
-  const [activeTab, setActiveTab] = useState("models")
-  const [cartItems, setCartItems] = useState([])
+  const [activeTab, setActiveTab] = useState("model")
+  const [carts, setCarts] = useState([])
 
-  console.log(cartItems)
   return (
     <>
       <NavBar />
@@ -31,15 +26,13 @@ function App() {
       {/* name of each tab group should be unique */}
 
       <div className="tabs tabs-box justify-center bg-transparent">
-        <input type="radio" name="my_tabs_1" className="tab w-30 rounded-full" aria-label="Models" defaultChecked onClick={()=> setActiveTab("models")} />
+        <input type="radio" name="my_tabs_1" className="tab w-30 rounded-full" aria-label="Models" defaultChecked onClick={()=> setActiveTab("model")} />
         <input type="radio" name="my_tabs_1" className="tab w-30 rounded-full" aria-label="Cart" onClick={()=> setActiveTab("cart")}/>
-      
       </div>
 
+      {activeTab === "model" && <Models modelPromise={modelPromise} carts={carts} setCarts={setCarts} />}
 
-      {activeTab === "models" && <Models cartItems={cartItems} setCartItems={setCartItems} modelPromise={modelPromise} />}
-
-      {activeTab === "cart" && <Cart cartItems={cartItems} setCartItems={setCartItems} />}
+      {activeTab === "cart" && <Cart carts={carts} setCarts={setCarts} />}
 
       <Footer />
     </>

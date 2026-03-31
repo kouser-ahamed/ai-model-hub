@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 
-const ModeslCard = ({ model, cartItems, setCartItems }) => {
+const ModeslCard = ({ model,carts, setCarts }) => {
 
-    const [isSubscribed, setIsSubscribed] = useState(false);
-
-    const handleSubscribe = () => {
-        setIsSubscribed(true);
-        setCartItems([...cartItems, model])
+    const [isSubscribed, setIsSubscribed] = useState(false)
+    const handelSubsCription = () => {
+        setIsSubscribed(true)
+        setCarts([...carts, model])
     }
     return (
 
@@ -20,7 +19,7 @@ const ModeslCard = ({ model, cartItems, setCartItems }) => {
                 <h2 className="text-xl font-bold">{model.title}</h2>
                 <p>{model.description}</p>
                 <div className="text-2xl font-bold">${model.price}/month</div>
-                <button onClick={handleSubscribe} className="btn w-full bg-red-500 text-white rounded-lg mt-5">{isSubscribed ? "Subscribed" : "Subscribe Now"}</button>
+                <button onClick={handelSubsCription} className="btn w-full bg-red-500 text-white rounded-lg mt-5">{isSubscribed ? "Subscribed" : "Subscribe Now"}</button>
 
 
             </div>

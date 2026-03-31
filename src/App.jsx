@@ -27,7 +27,7 @@ function App() {
 
       <div className="tabs tabs-box justify-center bg-transparent">
         <input type="radio" name="my_tabs_1" className="tab w-30 rounded-full" aria-label="Models" defaultChecked onClick={()=> setActiveTab("model")} />
-        <input type="radio" name="my_tabs_1" className="tab w-30 rounded-full" aria-label="Cart" onClick={()=> setActiveTab("cart")}/>
+        <input type="radio" name="my_tabs_1" className="tab w-30 rounded-full" aria-label={`Cart (${carts.length})`} onClick={()=> setActiveTab("cart")}/>
       </div>
 
       {activeTab === "model" && <Models modelPromise={modelPromise} carts={carts} setCarts={setCarts} />}

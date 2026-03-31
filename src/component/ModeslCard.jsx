@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-const ModeslCard = ({ model }) => {
+const ModeslCard = ({ model, cartItems, setCartItems }) => {
 
     const [isSubscribed, setIsSubscribed] = useState(false);
 
     const handleSubscribe = () => {
         setIsSubscribed(true);
+        setCartItems([...cartItems, model])
     }
     return (
 

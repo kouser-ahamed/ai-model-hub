@@ -7,6 +7,15 @@ const ModeslCard = ({ model,carts, setCarts }) => {
 
     const handelSubsCription = () => {
         setIsSubscribed(true)
+        
+        const isFound = carts.find(item => item.id ===model.id)
+        console.log(isFound)
+        if(isFound){
+            toast.error("Already Subscribed!")
+            return;
+        }
+
+
         setCarts([...carts, model])
         toast.success("Item Added to Cart!")
     }

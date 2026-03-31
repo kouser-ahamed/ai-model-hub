@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import Banner from "./component/Banner";
 import Cart from "./component/Cart";
@@ -17,6 +18,10 @@ const modelPromise = getModels()
 
 
 function App() {
+
+  const [activeTab, setActiveTab] = useState("models")
+  console.log(activeTab)
+
   return (
     <>
       <NavBar />
@@ -25,14 +30,14 @@ function App() {
       {/* name of each tab group should be unique */}
 
       <div className="tabs tabs-box justify-center bg-transparent">
-        <input type="radio" name="my_tabs_1" className="tab w-30 rounded-full" aria-label="Models" defaultChecked />
-        <input type="radio" name="my_tabs_1" className="tab w-30 rounded-full" aria-label="Cart"/>
+        <input type="radio" name="my_tabs_1" className="tab w-30 rounded-full" aria-label="Models" defaultChecked onClick={()=> setActiveTab("Models")} />
+        <input type="radio" name="my_tabs_1" className="tab w-30 rounded-full" aria-label="Cart" onClick={()=> setActiveTab("Cart")}/>
       
       </div>
 
 
-      <Models modelPromise={modelPromise} />
-      <Cart></Cart>
+      {activeTab === "Models" ? <Models modelPromise={modelPromise} /> : <Cart />}
+      
       <Footer />
     </>
   );
